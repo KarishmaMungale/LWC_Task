@@ -1,0 +1,25 @@
+<template>
+    <lightning-card title="Filters">
+        <div class="slds-p-around_medium">
+
+            <lightning-combobox
+                label="Stage"
+                options={stageOptions}
+                onchange={handleStage}>
+            </lightning-combobox>
+
+            <lightning-input
+                type="date"
+                label="Start Date"
+                onchange={handleStart}>
+            </lightning-input>
+
+            <lightning-input
+                type="date"
+                label="End Date"
+                onchange={handleEnd}>
+            </lightning-input>
+
+        </div>
+    </lightning-card>
+</template>

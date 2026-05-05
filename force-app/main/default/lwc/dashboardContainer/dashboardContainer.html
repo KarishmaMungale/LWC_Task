@@ -1,0 +1,29 @@
+<template>
+    <lightning-card title="Sales Dashboard" icon-name="standard:dashboard">
+
+        <!-- Filters -->
+        <c-filter-panel></c-filter-panel>
+
+        <!-- KPI Section -->
+        <lightning-layout multiple-rows class="slds-m-top_medium">
+            <lightning-layout-item size="12" medium-device-size="4">
+                <c-kpi-card title="Total Revenue" value={totalRevenue}></c-kpi-card>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="12" medium-device-size="4">
+                <c-kpi-card title="Total Opportunities" value={totalOpps}></c-kpi-card>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="12" medium-device-size="4">
+                <c-kpi-card title="Closed Won" value={closedWon}></c-kpi-card>
+            </lightning-layout-item>
+        </lightning-layout>
+
+        <!-- Chart -->
+        <c-chart-component opportunities={opportunities}></c-chart-component>
+
+        <!-- Map -->
+        <c-map-component opportunities={opportunities}></c-map-component>
+
+    </lightning-card>
+</template>

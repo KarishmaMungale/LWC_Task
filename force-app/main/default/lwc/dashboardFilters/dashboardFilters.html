@@ -1,0 +1,52 @@
+<template>
+    <div class="slds-box slds-theme_shade">
+        <p class="slds-text-body_small slds-text-color_weak slds-m-bottom_small">
+            Close date filters by Opportunity Close Date (expected close for open deals, actual close for won/lost).
+            Owner and stage match the opportunity record.
+        </p>
+        <div class="slds-grid slds-wrap slds-gutters_small slds-grid_vertical-align-end">
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6">
+                <lightning-input
+                    type="date"
+                    label="Close date from"
+                    value={startDate}
+                    onchange={handleStartChange}
+                ></lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6">
+                <lightning-input
+                    type="date"
+                    label="Close date to"
+                    value={endDate}
+                    onchange={handleEndChange}
+                ></lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+                <lightning-combobox
+                    name="owner"
+                    label="Owner"
+                    value={ownerId}
+                    placeholder="Select owner"
+                    options={ownerOptions}
+                    onchange={handleOwnerChange}
+                ></lightning-combobox>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+                <lightning-combobox
+                    name="stage"
+                    label="Stage"
+                    value={stageName}
+                    placeholder="Select stage"
+                    options={stageOptions}
+                    onchange={handleStageChange}
+                ></lightning-combobox>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-6 slds-text-align_right slds-m-top_small slds-large-m-top_none">
+                <lightning-button-group>
+                    <lightning-button variant="brand" label="Apply filters" onclick={handleApply}></lightning-button>
+                    <lightning-button label="Reset" onclick={handleReset}></lightning-button>
+                </lightning-button-group>
+            </div>
+        </div>
+    </div>
+</template>

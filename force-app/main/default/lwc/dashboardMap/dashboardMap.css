@@ -1,0 +1,18 @@
+.map-host {
+    width: 100%;
+    min-height: 200px;
+    position: relative;
+}
+
+.map-host__canvas {
+    width: 100%;
+    min-height: 320px;
+    border-radius: 0.25rem;
+    border: 1px solid var(--lwc-colorBorder, #dddbda);
+}
+
+@media (max-width: 48rem) {
+    .map-host__canvas {
+        min-height: 260px;
+    }
+}

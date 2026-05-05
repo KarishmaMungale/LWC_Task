@@ -1,0 +1,39 @@
+.dashboard-root {
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+.metric-tile {
+    height: 100%;
+    border-radius: 0.25rem;
+}
+
+.metric-chip {
+    font-size: 1.75rem;
+    font-weight: 600;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    display: inline-block;
+}
+
+.metric-chip_positive {
+    background-color: #d9f4e3;
+    color: #0b5c3e;
+}
+
+.metric-chip_negative {
+    background-color: #fededc;
+    color: #8c2a1c;
+}
+
+.metric-chip_neutral {
+    background-color: #f3f3f3;
+    color: #3e3e3c;
+}
+
+@media (max-width: 48rem) {
+    .dashboard-root {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+}
