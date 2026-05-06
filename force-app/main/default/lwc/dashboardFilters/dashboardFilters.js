@@ -1,7 +1,7 @@
 import { LightningElement, wire, track } from 'lwc';
 import { publish, MessageContext } from 'lightning/messageService';
-import getActiveOwners from '@salesforce/apex/DashboardControllerTest.getActiveOwners';
-import getOpportunityStageOptions from '@salesforce/apex/DashboardControllerTest.getOpportunityStageOptions';
+import getActiveOwners from '@salesforce/apex/DashboardController.getActiveOwners';
+import getOpportunityStageOptions from '@salesforce/apex/DashboardController.getOpportunityStageOptions';
 import DASHBOARD_FILTERS from '@salesforce/messageChannel/DashboardFilters__c';
 
 const ALL_STAGES = [{ label: 'All stages', value: '' }];

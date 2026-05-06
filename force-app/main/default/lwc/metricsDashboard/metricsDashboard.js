@@ -1,7 +1,7 @@
 import { LightningElement, wire, track } from 'lwc';
 import { subscribe, unsubscribe, MessageContext } from 'lightning/messageService';
-import getDashboardMetrics from '@salesforce/apex/DashboardControllerTest.getDashboardMetrics';
-import getAccountLocations from '@salesforce/apex/DashboardControllerTest.getAccountLocations';
+import getDashboardMetrics from '@salesforce/apex/DashboardController.getDashboardMetrics';
+import getAccountLocations from '@salesforce/apex/DashboardController.getAccountLocations';
 import DASHBOARD_FILTERS from '@salesforce/messageChannel/DashboardFilters__c';
 
 function blankToNull(value) {
@@ -143,7 +143,13 @@ export default class MetricsDashboard extends LightningElement {
         this.metricsError = undefined;
         const filters = this.toPlainFilters();
         try {
-            const data = await getDashboardMetrics({ filters });
+            const data = await getDashboardMetrics({
+                startDate: filters.startDate,
+                endDate: filters.endDate,
+                ownerId: filters.ownerId,
+                stageName: filters.stageName,
+                refreshToken: filters.refreshToken
+            });
             if (requestId !== this.metricsRequestId) {
                 return;
             }

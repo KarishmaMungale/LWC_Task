@@ -57,20 +57,26 @@ public with sharing class DashboardControllerTest {
         public Boolean truncated;
     }
 
+    // Discrete params: imperative LWC calls with a single custom-type arg often deserialize all-null (cacheable Apex).
     @AuraEnabled(cacheable=true)
-    public static MetricsDto getDashboardMetrics(FilterCriteria filters) {
-        FilterCriteria safe = filters == null ? new FilterCriteria() : filters;
-        Date startDate = parseDate(safe.startDate);
-        Date endDate = parseDate(safe.endDate);
-        Id ownerId = parseId(safe.ownerId);
-        String stage = resolveStageName(safe.stageName);
+    public static MetricsDto getDashboardMetrics(
+        String startDate,
+        String endDate,
+        String ownerId,
+        String stageName,
+        Long refreshToken
+    ) {
+        Date sd = parseDate(startDate);
+        Date ed = parseDate(endDate);
+        Id oid = parseId(ownerId);
+        String stage = resolveStageName(stageName);
 
         MetricsDto dto = new MetricsDto();
-        dto.openCount = aggregateCount(false, false, startDate, endDate, ownerId, stage);
-        dto.openAmount = aggregateSum(false, false, startDate, endDate, ownerId, stage);
-        dto.wonCount = aggregateCount(true, true, startDate, endDate, ownerId, stage);
-        dto.lostCount = aggregateCount(true, false, startDate, endDate, ownerId, stage);
-        dto.stageSlices = aggregateByStage(startDate, endDate, ownerId, stage);
+        dto.openCount = aggregateCount(false, false, sd, ed, oid, stage);
+        dto.openAmount = aggregateSum(false, false, sd, ed, oid, stage);
+        dto.wonCount = aggregateCount(true, true, sd, ed, oid, stage);
+        dto.lostCount = aggregateCount(true, false, sd, ed, oid, stage);
+        dto.stageSlices = aggregateByStage(sd, ed, oid, stage);
         return dto;
     }
 
